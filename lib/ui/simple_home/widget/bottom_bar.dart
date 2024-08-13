@@ -20,6 +20,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget>{
             selectedIndex = value;
           });
         },
+        selectedIndex: selectedIndex,
         destinations: const [
           NavigationDestination(icon: Icon(Icons.cottage_outlined), label: '首页'),
           NavigationDestination(icon: Icon(Icons.tag), label: '标签'),
