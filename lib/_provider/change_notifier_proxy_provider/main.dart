@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cl/provider/change_notifier_proxy_provider/models/book.dart';
+import 'package:flutter_cl/_provider/change_notifier_proxy_provider/models/book.dart';
 import 'package:provider/provider.dart';
-import './pages/book_page.dart';
-import './pages/favorite_page.dart';
+import 'pages/book_page.dart';
+import 'pages/favorite_page.dart';
 import 'models/book_manager.dart';
 
 void main() {

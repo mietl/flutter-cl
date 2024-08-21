@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cl/provider/change_notifier_proxy_provider/models/book_manager.dart';
-import 'package:flutter_cl/provider/change_notifier_proxy_provider/pages/book_page.dart';
+import 'package:flutter_cl/_provider/change_notifier_proxy_provider/models/book_manager.dart';
+import 'package:flutter_cl/_provider/change_notifier_proxy_provider/pages/book_page.dart';
 import 'package:provider/provider.dart';
 
 class FavoritePage extends StatelessWidget{

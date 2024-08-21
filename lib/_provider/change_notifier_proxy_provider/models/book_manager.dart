@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cl/provider/change_notifier_proxy_provider/models/book.dart';
+import 'package:flutter_cl/_provider/change_notifier_proxy_provider/models/book.dart';
 
 class BookManagerModel with ChangeNotifier{
   final BookModel _bookModel;
