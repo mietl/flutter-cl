@@ -34,7 +34,7 @@ void doCPUTask() async {
         isolate.kill();
       }
     },onError: (error){
-      print('catch error:${error}');
+      print('catch error:$error');
     },onDone: (){
       print('done');
     });

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 Future<String> fetchUserOrder1() =>
     Future.delayed(const Duration(seconds: 1), () => 'Order 1');
 
@@ -28,5 +26,5 @@ Future<void> doTasks() async {
   // 三个任务同时进行，当任务3结束时，任务2 早已经执行完了，所以结果是3秒
 
   var endTime = DateTime.now().second;
-  log((endTime - startTime).toString()); // >  3s
+  print((endTime - startTime).toString()); // >  3s
 }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 Future<String> fetchUserOrder1() =>
     Future.delayed(const Duration(seconds: 1), () => 'Order 1');
 
@@ -21,7 +19,6 @@ Future<void> doTasks() async {
   var order2 = await fetchUserOrder2();
   var order3 = await fetchUserOrder3();
 
-
   var endTime = DateTime.now().second;
-  log((endTime - startTime).toString()); // >  6s
+  print((endTime - startTime).toString()); // >  6s
 }
