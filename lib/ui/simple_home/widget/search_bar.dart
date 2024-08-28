@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
-class SearchBarWidget extends StatelessWidget{
+class SearchBarWidget extends StatelessWidget {
+  const SearchBarWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20.0,right: 20.0,bottom: 7.0),
+      padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 7.0),
       child: Row(
         children: [
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 7,horizontal: 14),
+              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 14),
               decoration: BoxDecoration(
-                color: const Color(0xFFC8E1D7).withOpacity(.6),
-                borderRadius: BorderRadius.circular(7)
-              ),
+                  color: const Color(0xFFC8E1D7).withOpacity(.6),
+                  borderRadius: BorderRadius.circular(7)),
               child: const Row(
                 children: [
                   Icon(Icons.search_outlined),
@@ -21,7 +22,6 @@ class SearchBarWidget extends StatelessWidget{
                   Text('搜索')
                 ],
               ),
-                  
             ),
           ),
           const SizedBox(width: 7.0),
@@ -30,5 +30,4 @@ class SearchBarWidget extends StatelessWidget{
       ),
     );
   }
-  
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cl/ui/simple_home/widget/content_widget.dart';
 import './widget/search_bar.dart';
-import './widget/content_widget.dart';
 import './widget/bottom_bar.dart';
 
 void main() {
@@ -32,21 +31,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              SearchBarWidget(),
-              const ContentWidget(),
-              const BottomBarWidget()
-            ],
-          ),
+    return const Scaffold(
+        body: SafeArea(
+      child: Center(
+        child: Column(
+          children: <Widget>[
+            SearchBarWidget(),
+            ContentWidget(),
+            BottomBarWidget()
+          ],
         ),
-      )
-    );
+      ),
+    ));
   }
 }

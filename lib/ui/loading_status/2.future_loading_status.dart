@@ -3,19 +3,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-enum LoadingStatus {
-  initial,  // 初始化状态
-  content,  // 显示内容
-  loading, // 加载中
-  empty,
-  disconnect, // 断网
-  error
-}
-
-
-var statusList = LoadingStatus.values;
-
-
 
 class FutureLoadingStatusWidget<T> extends StatelessWidget{
   final Future<T>? future;  // 异步任务
@@ -38,7 +25,8 @@ class FutureLoadingStatusWidget<T> extends StatelessWidget{
           }
           return _errorWidget();
         }else{
-          return snapshot.hasData? child : _emptyWidget();
+          // return snapshot.hasData? child : _emptyWidget();
+          return child;
         }
     }
   }

@@ -1,53 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class UserInfo with ChangeNotifier{
+class UserInfo with ChangeNotifier {
   String userName = 'mietl';
 
-  void changeUserName(String name){
+  void changeUserName(String name) {
     userName = name;
     notifyListeners();
   }
 }
 
-class ColorScheme with ChangeNotifier{
+class ColorScheme with ChangeNotifier {
   Color primaryColor = const Color(0xFFd276a3);
 
-  setColorScheme(Color cl){
+  setColorScheme(Color cl) {
     primaryColor = cl;
     notifyListeners();
   }
 }
 
+void main() => runApp(const MyApp());
 
-void main()=> runApp(MyApp());
-
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_)=>ColorScheme()),
-        ChangeNotifierProvider(create: (_)=>UserInfo()),
+        ChangeNotifierProvider(create: (_) => ColorScheme()),
+        ChangeNotifierProvider(create: (_) => UserInfo()),
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         home: ProviderPage(),
       ),
     );
   }
 }
 
-class ProviderPage extends StatefulWidget{
+class ProviderPage extends StatefulWidget {
+  const ProviderPage({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _ProviderPageState();
   }
 }
 
-
-class _ProviderPageState extends State<ProviderPage>{
+class _ProviderPageState extends State<ProviderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +55,7 @@ class _ProviderPageState extends State<ProviderPage>{
         body: Column(
           children: [
             Consumer<ColorScheme>(
-              builder: (context,value,child){
+              builder: (context, value, child) {
                 return Container(
                   width: 100,
                   height: 100,
@@ -67,10 +67,9 @@ class _ProviderPageState extends State<ProviderPage>{
             ),
             Consumer<UserInfo>(
                 builder: (BuildContext context, UserInfo value, Widget? child) {
-                  return Text(value.userName,style: const TextStyle(fontSize: 17));
-                }),
+              return Text(value.userName, style: const TextStyle(fontSize: 17));
+            }),
           ],
-        )
-    );
+        ));
   }
 }

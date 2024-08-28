@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cl/ui/loading_status/index.dart';
+import 'package:flutter_cl/ui/loading_status/2.future_loading_status.dart';
+
+import 'enum.dart';
 
 
 void main() {
@@ -36,6 +38,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
    var _loadingStatus = LoadingStatus.initial;
+
+   Future? _future;
+
    String hitokoto = '';
 
 
@@ -44,7 +49,6 @@ class _MyHomePageState extends State<MyHomePage> {
      _updateLoadingStatus(LoadingStatus.loading);
      Dio().get('https://v1.hitokoto.cn/').then((value){
         hitokoto = value.data['hitokoto'];
-
        _updateLoadingStatus(LoadingStatus.content);
      }).catchError((e){
         hitokoto = e.toString();
@@ -54,6 +58,27 @@ class _MyHomePageState extends State<MyHomePage> {
           }
         }
         _updateLoadingStatus(LoadingStatus.error);
+     });
+   }
+
+   void _updateLoadingStatus(LoadingStatus status){
+     setState(() {
+       _loadingStatus = status;
+     });
+   }
+
+
+
+   fetchHitokoto(){
+     return Dio().get('https://v1.hitokoto.cn/').then((value){
+        hitokoto = value.data['hitokoto'];
+     });
+   }
+
+   // TODO 不喜欢这样的方式
+   futureLoading(){
+     setState(() {
+       _future = fetchHitokoto();
      });
    }
 
@@ -70,23 +95,31 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             OutlinedButton(onPressed: fetchState , child: const Text('fetch')),
+            OutlinedButton(onPressed: futureLoading , child: const Text('fetch future loading_status')),
             const SizedBox(
               height: 7,
             ),
             // _loadingStatus 改变会重新执行 LoadingStatusWidget  build hitokoto 获取到的就是最新的，因此不需要 setState
-            LoadingStatusWidget(
-                status: _loadingStatus,
-                child: Text(hitokoto)
-            )
+            // LoadingStatusWidget(
+            //     status: _loadingStatus,
+            //     child: Text(hitokoto)
+            // ),
+            FutureLoadingStatusWidget(
+               future: _future,
+               child: Text(hitokoto),
+            ),
+            const Text('stream'),
+            // StreamLoadingStatusWidget(
+            //   future: _future,
+            //   child: (data){
+            //     return Text(hitokoto);
+            //   },
+            // )
           ],
         ),
       )
     );
   }
 
-  void _updateLoadingStatus(LoadingStatus status){
-     setState(() {
-       _loadingStatus = status;
-     });
-  }
+
 }

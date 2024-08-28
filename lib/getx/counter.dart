@@ -1,16 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() => runApp(GetMaterialApp(home:Home()));
+void main() => runApp(const GetMaterialApp(home: Home()));
 
-class Controller extends GetxController{
+class Controller extends GetxController {
   var count = 0.obs;
   increment() => count++;
 }
 
-
-class Home extends StatelessWidget{
+class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
@@ -20,13 +18,12 @@ class Home extends StatelessWidget{
       appBar: AppBar(title: const Text('Count App')),
       body: Column(
         children: [
-          Obx(()=>Text('Clicks:${c.count}')),
+          Obx(() => Text('Clicks:${c.count}')),
           ElevatedButton(
-              onPressed: (){
+              onPressed: () {
                 Get.to(const OtherPage());
               },
-              child: const Text('Go to')
-          )
+              child: const Text('Go to'))
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -37,17 +34,16 @@ class Home extends StatelessWidget{
   }
 }
 
-class OtherPage extends StatelessWidget{
+class OtherPage extends StatelessWidget {
   const OtherPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Controller c =  Get.find();
+    final Controller c = Get.find();
     return Scaffold(
       body: Center(
         child: Text('状态${c.count}'),
       ),
     );
   }
-  
 }
