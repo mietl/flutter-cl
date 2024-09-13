@@ -53,7 +53,7 @@ class MyHomePage extends ConsumerWidget {
           onPressed: () {
             ref.read(clickCountProvider.notifier).state++;
          },
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
       )
     );
   }

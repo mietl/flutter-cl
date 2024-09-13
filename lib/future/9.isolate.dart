@@ -1,13 +1,13 @@
 import 'dart:isolate';
 
-void main(){
+void main() {
   doCPUTask();
 }
 
-void echo(SendPort sendPort){
+void echo(SendPort sendPort) {
   int sum = 0;
-  for(int i = 0; i < 1000000000; i++){
-    sum+=i;
+  for (int i = 0; i < 1000000000; i++) {
+    sum += i;
   }
 
   sendPort.send(sum);
@@ -26,16 +26,16 @@ void doCPUTask() async {
   // 创建单独isolate
   final isolate = await Isolate.spawn(echo, receivePort.sendPort);
 
-    receivePort.listen((message){
-      print('接收消息:$message');
+  receivePort.listen((message) {
+    print('接收消息:$message');
 
-      if(message == 'close'){
-        receivePort.close();
-        isolate.kill();
-      }
-    },onError: (error){
-      print('catch error:$error');
-    },onDone: (){
-      print('done');
-    });
+    if (message == 'close') {
+      receivePort.close();
+      isolate.kill();
+    }
+  }, onError: (error) {
+    print('catch error:$error');
+  }, onDone: () {
+    print('done');
+  });
 }

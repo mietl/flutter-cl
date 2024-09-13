@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 Future<String> fetchUserOrder1() =>
     Future.delayed(const Duration(seconds: 1), () => 'Order 1');
 

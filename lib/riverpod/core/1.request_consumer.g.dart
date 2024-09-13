@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '5.widget_ref.dart';
+part of '1.request_consumer.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$someStateHash() => r'8c2c137a79620dcbf006399b65e97357a4786a39';
+String _$hitokotoHash() => r'b57d385ea3cec4c8519cbebb49d02526a225ee15';
 
-/// See also [someState].
-@ProviderFor(someState)
-final someStateProvider = AutoDisposeFutureProvider<int>.internal(
-  someState,
-  name: r'someStateProvider',
+/// See also [hitokoto].
+@ProviderFor(hitokoto)
+final hitokotoProvider = AutoDisposeFutureProvider<Hitokoto>.internal(
+  hitokoto,
+  name: r'hitokotoProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$someStateHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$hitokotoHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef SomeStateRef = AutoDisposeFutureProviderRef<int>;
+typedef HitokotoRef = AutoDisposeFutureProviderRef<Hitokoto>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

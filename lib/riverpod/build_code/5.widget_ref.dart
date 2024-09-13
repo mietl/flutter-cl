@@ -4,10 +4,10 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part '5.widget_ref.g.dart';
 
-
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -27,11 +27,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 @riverpod
-Future<int> someState(SomeStateRef ref)=> Future.delayed(Duration(seconds: 3),()=>14);
+Future<int> someState(SomeStateRef ref) =>
+    Future.delayed(const Duration(seconds: 3), () => 14);
 
-class UseWidgetRef extends ConsumerStatefulWidget{
+class UseWidgetRef extends ConsumerStatefulWidget {
   const UseWidgetRef({super.key});
 
   @override
@@ -40,11 +40,11 @@ class UseWidgetRef extends ConsumerStatefulWidget{
   }
 }
 
-class _UseWidgetRefState extends ConsumerState<UseWidgetRef>{
+class _UseWidgetRefState extends ConsumerState<UseWidgetRef> {
   @override
   Widget build(BuildContext context) {
     final some = ref.watch(someStateProvider);
-    return  Text(some.value.toString());
+    return Text(some.value.toString());
   }
 }
 
@@ -53,19 +53,16 @@ class AsyncValueUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-        builder: (context,ref,child){
-           final asyncValue = ref.watch(someStateProvider);
-          // final AsyncValue<AsyncValueExample> asyncValue = ref.watch(someStateProvider);
-          return Center(
-            child: switch(asyncValue){
-              AsyncData(:final value)=> Text('data:$value'),
-              AsyncError(:final error)=> const Text('error'),
-              _=> const Text('loading')
-            },
-          );
-        }
-    );
+    return Consumer(builder: (context, ref, child) {
+      final asyncValue = ref.watch(someStateProvider);
+      // final AsyncValue<AsyncValueExample> asyncValue = ref.watch(someStateProvider);
+      return Center(
+        child: switch (asyncValue) {
+          AsyncData(:final value) => Text('data:$value'),
+          AsyncError(:final error) => Text('error:$error'),
+          _ => const Text('loading')
+        },
+      );
+    });
   }
-
 }
