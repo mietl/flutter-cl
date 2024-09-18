@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part '3.arguments.g.dart';
 
 @riverpod
-Future<Hitokoto> hitokoto(HitokotoRef ref) async {
+Future<Hitokoto> hitokoto(HitokotoRef ref, String type) async {
   final response = await Dio().get('https://v1.hitokoto.cn/');
   return Hitokoto.fromJson(response.data);
 }
@@ -54,7 +54,8 @@ class MyHomePage extends ConsumerWidget {
           title: const Text('Request'),
         ),
         body: Consumer(builder: (context, ref, _) {
-          final AsyncValue<Hitokoto> hitokoto = ref.watch(hitokotoProvider);
+          final AsyncValue<Hitokoto> hitokoto =
+              ref.watch(hitokotoProvider('type'));
           return hitokoto.when(
               data: (value) => Text('$value'),
               error: (e, _) => Text('$e'),

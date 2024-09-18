@@ -1,12 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '3.arguments.dart';
+part of 'test_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$hitokotoHash() => r'3313539f7fbc0dbd9d2dc8d80d20f80d61957216';
+String _$getTestHash() => r'ba2ef424f8f82f4e824b9c127c97bfbabc6081b8';
+
+/// See also [getTest].
+@ProviderFor(getTest)
+final getTestProvider = AutoDisposeFutureProvider<dynamic>.internal(
+  getTest,
+  name: r'getTestProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getTestHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef GetTestRef = AutoDisposeFutureProviderRef<dynamic>;
+String _$postTestHash() => r'72eb0a9262d1ae4edbfc470325c781aca17579ea';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,27 +43,27 @@ class _SystemHash {
   }
 }
 
-/// See also [hitokoto].
-@ProviderFor(hitokoto)
-const hitokotoProvider = HitokotoFamily();
+/// See also [postTest].
+@ProviderFor(postTest)
+const postTestProvider = PostTestFamily();
 
-/// See also [hitokoto].
-class HitokotoFamily extends Family<AsyncValue<Hitokoto>> {
-  /// See also [hitokoto].
-  const HitokotoFamily();
+/// See also [postTest].
+class PostTestFamily extends Family<AsyncValue<dynamic>> {
+  /// See also [postTest].
+  const PostTestFamily();
 
-  /// See also [hitokoto].
-  HitokotoProvider call(
-    String type,
+  /// See also [postTest].
+  PostTestProvider call(
+    dynamic type,
   ) {
-    return HitokotoProvider(
+    return PostTestProvider(
       type,
     );
   }
 
   @override
-  HitokotoProvider getProviderOverride(
-    covariant HitokotoProvider provider,
+  PostTestProvider getProviderOverride(
+    covariant PostTestProvider provider,
   ) {
     return call(
       provider.type,
@@ -68,31 +82,31 @@ class HitokotoFamily extends Family<AsyncValue<Hitokoto>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'hitokotoProvider';
+  String? get name => r'postTestProvider';
 }
 
-/// See also [hitokoto].
-class HitokotoProvider extends AutoDisposeFutureProvider<Hitokoto> {
-  /// See also [hitokoto].
-  HitokotoProvider(
-    String type,
+/// See also [postTest].
+class PostTestProvider extends AutoDisposeFutureProvider<dynamic> {
+  /// See also [postTest].
+  PostTestProvider(
+    dynamic type,
   ) : this._internal(
-          (ref) => hitokoto(
-            ref as HitokotoRef,
+          (ref) => postTest(
+            ref as PostTestRef,
             type,
           ),
-          from: hitokotoProvider,
-          name: r'hitokotoProvider',
+          from: postTestProvider,
+          name: r'postTestProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$hitokotoHash,
-          dependencies: HitokotoFamily._dependencies,
-          allTransitiveDependencies: HitokotoFamily._allTransitiveDependencies,
+                  : _$postTestHash,
+          dependencies: PostTestFamily._dependencies,
+          allTransitiveDependencies: PostTestFamily._allTransitiveDependencies,
           type: type,
         );
 
-  HitokotoProvider._internal(
+  PostTestProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -102,16 +116,16 @@ class HitokotoProvider extends AutoDisposeFutureProvider<Hitokoto> {
     required this.type,
   }) : super.internal();
 
-  final String type;
+  final dynamic type;
 
   @override
   Override overrideWith(
-    FutureOr<Hitokoto> Function(HitokotoRef provider) create,
+    FutureOr<dynamic> Function(PostTestRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: HitokotoProvider._internal(
-        (ref) => create(ref as HitokotoRef),
+      override: PostTestProvider._internal(
+        (ref) => create(ref as PostTestRef),
         from: from,
         name: null,
         dependencies: null,
@@ -123,13 +137,13 @@ class HitokotoProvider extends AutoDisposeFutureProvider<Hitokoto> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<Hitokoto> createElement() {
-    return _HitokotoProviderElement(this);
+  AutoDisposeFutureProviderElement<dynamic> createElement() {
+    return _PostTestProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is HitokotoProvider && other.type == type;
+    return other is PostTestProvider && other.type == type;
   }
 
   @override
@@ -141,34 +155,17 @@ class HitokotoProvider extends AutoDisposeFutureProvider<Hitokoto> {
   }
 }
 
-mixin HitokotoRef on AutoDisposeFutureProviderRef<Hitokoto> {
+mixin PostTestRef on AutoDisposeFutureProviderRef<dynamic> {
   /// The parameter `type` of this provider.
-  String get type;
+  dynamic get type;
 }
 
-class _HitokotoProviderElement
-    extends AutoDisposeFutureProviderElement<Hitokoto> with HitokotoRef {
-  _HitokotoProviderElement(super.provider);
+class _PostTestProviderElement extends AutoDisposeFutureProviderElement<dynamic>
+    with PostTestRef {
+  _PostTestProviderElement(super.provider);
 
   @override
-  String get type => (origin as HitokotoProvider).type;
+  dynamic get type => (origin as PostTestProvider).type;
 }
-
-String _$hitokotoNotifierHash() => r'e0fa4b2e596d14d5770419e81cdf88471465e788';
-
-/// See also [HitokotoNotifier].
-@ProviderFor(HitokotoNotifier)
-final hitokotoNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<HitokotoNotifier, Hitokoto>.internal(
-  HitokotoNotifier.new,
-  name: r'hitokotoNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$hitokotoNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$HitokotoNotifier = AutoDisposeAsyncNotifier<Hitokoto>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

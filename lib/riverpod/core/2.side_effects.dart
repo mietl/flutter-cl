@@ -5,12 +5,31 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part '2.side_effects.g.dart';
 
-// TODO test
+main() {
+  runApp(const ProviderScope(child: MyApp()));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const SideEffectDemo(),
+    );
+  }
+}
+
 class Todo {
   String? description;
-  bool? complated;
+  bool? completed;
 
-  Todo({required this.description, this.complated});
+  Todo({required this.description, this.completed});
 }
 
 @riverpod
@@ -61,33 +80,37 @@ class _SideEffectDemoState extends ConsumerState<SideEffectDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: _pendingAddTodo,
-        builder: (context, snapshot) {
-          final isErrored = snapshot.hasError &&
-              snapshot.connectionState != ConnectionState.waiting;
+    return Scaffold(
+      appBar: AppBar(title: const Text('side effect')),
+      body: FutureBuilder(
+          future: _pendingAddTodo,
+          builder: (context, snapshot) {
+            final isErrored = snapshot.hasError &&
+                snapshot.connectionState != ConnectionState.waiting;
 
-          return Row(
-            children: [
-              ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: WidgetStatePropertyAll(
-                          isErrored ? Colors.red : null)),
-                  onPressed: () {
-                    final future = ref
-                        .read(todoListNotifierProvider.notifier)
-                        .addTodo(Todo(description: '创建文件夹'));
-                    setState(() {
-                      _pendingAddTodo = future;
-                    });
-                  },
-                  child: const Text('Add Todo')),
-              if (snapshot.connectionState == ConnectionState.waiting) ...[
-                const SizedBox(width: 14),
-                const CircularProgressIndicator()
-              ]
-            ],
-          );
-        });
+            return Row(
+              children: [
+                ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                            isErrored ? Colors.red : null)),
+                    onPressed: () {
+                      final future = ref
+                          .read(todoListNotifierProvider.notifier)
+                          .addTodo(Todo(description: '创建文件夹'));
+
+                      setState(() {
+                        _pendingAddTodo = future;
+                      });
+                    },
+                    child: const Text('Add Todo')),
+                if (snapshot.connectionState == ConnectionState.waiting) ...[
+                  const SizedBox(width: 14),
+                  const CircularProgressIndicator()
+                ]
+              ],
+            );
+          }),
+    );
   }
 }
