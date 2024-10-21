@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import './interceptors.dart';
+// import './interceptors.dart';
 
 class HttpAPI {
   static final HttpAPI _instance = HttpAPI._internal();
